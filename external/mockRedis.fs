@@ -1,18 +1,18 @@
-﻿namespace MyRedisCLI.external
+﻿module MockRedis
 
-open MyRedisCLI.domain
+open Domain
 
-module MockRedis = 
-    let ping () = "PONG"
-        
-    let get
-        (key:Key)
-        =
-            sprintf "%s" key
+
+let ping () = "PONG"
     
-    let set
-        (key:Key)
-        (value:Value)
-        (alive:Lifetime)
-        =
-            ()
+let get
+    (key:Key)
+    =
+        sprintf "%s" key
+
+let set
+    (key:Key)
+    (value:Value)
+    (alive:Lifetime)
+    =
+        ()

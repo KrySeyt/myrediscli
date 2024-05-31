@@ -1,32 +1,34 @@
-﻿namespace MyRedisCLI.application
+﻿module Interactors
 
-open MyRedisCLI.domain
+open System
+open Domain
 
-module Interactors = 
-    let ping
-        (redisPing: unit->string)
-        =
-            redisPing()
-       
-    let get
-        redisGet
-        (key: Key)
-        :string
-        =
-            redisGet key
+
+let ping
+    (redisPing: unit->byte array)
+    ()
+    =
+        redisPing()
+   
+let get
+    redisGet
+    (key: Key)
+    :string
+    =
+        redisGet key
+
+let set
+    redisSet
+    (key: Key)
+    (value: Value)
+    (alive: Lifetime option)
+    :unit
+    =
+        redisSet key value alive
     
-    let set
-        redisSet
-        (key: Key)
-        (value: Value)
-        (alive: Lifetime)
-        :unit
-        =
-            redisSet key value alive
-        
-    let wait
-        redisWait
-        (replicasCount: int)
-        (timeout: Timeout)
-        =
-            ()
+let waitReplicas
+    redisWait
+    (replicasCount: int)
+    (timeout: Timeout)
+    =
+        ()

@@ -8,6 +8,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "external", "external\extern
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "main", "main\main.fsproj", "{0BAE598F-29D6-48E2-9413-A780EAE8C661}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "adapters", "adapters\adapters.fsproj", "{1AB9BCC8-59D1-4FA9-9D48-613885B46D4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +36,9 @@ Global
 		{0BAE598F-29D6-48E2-9413-A780EAE8C661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BAE598F-29D6-48E2-9413-A780EAE8C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BAE598F-29D6-48E2-9413-A780EAE8C661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB9BCC8-59D1-4FA9-9D48-613885B46D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB9BCC8-59D1-4FA9-9D48-613885B46D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB9BCC8-59D1-4FA9-9D48-613885B46D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB9BCC8-59D1-4FA9-9D48-613885B46D4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

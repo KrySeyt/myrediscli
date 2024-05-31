@@ -1,4 +1,4 @@
-﻿namespace MyRedisCLI.domain
+﻿module Domain
 
 type Key = string
 type Value = string

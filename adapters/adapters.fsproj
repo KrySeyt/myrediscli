@@ -6,12 +6,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="mocked.fs" />
+        <Compile Include="encoders.fs" />
+        <Compile Include="commands.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\adapters\adapters.fsproj" />
-      <ProjectReference Include="..\external\external.fsproj" />
+      <EmbeddedResource Remove="t\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\application\application.fsproj" />
       <ProjectReference Include="..\domain\domain.fsproj" />
     </ItemGroup>

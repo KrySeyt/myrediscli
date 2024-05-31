@@ -8,9 +8,12 @@
 
     <ItemGroup>
         <Compile Include="mockRedis.fs" />
+        <Compile Include="TCPClient.fs" />
+        <Compile Include="TCPRedis.fs" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\adapters\adapters.fsproj" />
       <ProjectReference Include="..\domain\domain.fsproj" />
     </ItemGroup>
 
