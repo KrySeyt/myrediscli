@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="tcp.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\external\external.fsproj" />
+      <ProjectReference Include="..\application\application.fsproj" />
+      <ProjectReference Include="..\domain\domain.fsproj" />
+    </ItemGroup>
+
+</Project>
