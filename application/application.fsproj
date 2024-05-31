@@ -9,4 +9,8 @@
         <Compile Include="interactors.fs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\domain\domain.fsproj" />
+    </ItemGroup>
+
 </Project>

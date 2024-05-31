@@ -1,5 +1,7 @@
 ﻿namespace MyRedisCLI.application
 
+open MyRedisCLI.domain
+
 module Interactors = 
     let ping
         (redisPing: unit->string)
@@ -9,7 +11,7 @@ module Interactors =
        
     let get
         redisGet
-        (key: string)
+        (key: Key)
         :string
         =
         
@@ -17,9 +19,9 @@ module Interactors =
     
     let set
         redisSet
-        (key: string)
-        (value: string)
-        (alive: int)
+        (key: Key)
+        (value: Value)
+        (alive: Lifetime)
         :unit
         =
         
