@@ -2,4 +2,8 @@
 
 type Key = string
 type Value = string
-type Lifetime = int
+
+type Milliseconds = int
+
+type Lifetime = Milliseconds
+type Timeout = Milliseconds

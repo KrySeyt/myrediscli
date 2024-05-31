@@ -6,16 +6,14 @@ module Interactors =
     let ping
         (redisPing: unit->string)
         =
-
-       redisPing()
+            redisPing()
        
     let get
         redisGet
         (key: Key)
         :string
         =
-        
-        redisGet key
+            redisGet key
     
     let set
         redisSet
@@ -24,5 +22,11 @@ module Interactors =
         (alive: Lifetime)
         :unit
         =
+            redisSet key value alive
         
-        redisSet key value alive
+    let wait
+        redisWait
+        (replicasCount: int)
+        (timeout: Timeout)
+        =
+            ()

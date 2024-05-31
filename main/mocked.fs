@@ -4,5 +4,5 @@ open MyRedisCLI.external
 open MyRedisCLI.application
 
 module MockedMain =
-    let value = Interactors.get MockRedis.get "Test"
-    printfn "%s" value
+    let value = Interactors.set MockRedis.set "Key" "value" 1000
+    
