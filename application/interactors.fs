@@ -12,4 +12,15 @@ module Interactors =
         (key: string)
         :string
         =
+        
         redisGet key
+    
+    let set
+        redisSet
+        (key: string)
+        (value: string)
+        (alive: int)
+        :unit
+        =
+        
+        redisSet key value alive
