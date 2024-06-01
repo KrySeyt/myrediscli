@@ -2,6 +2,7 @@ module TCPClient
 
 open System
 open System.Net.Sockets
+open System.Text
 
 let send
     (host:string)
@@ -9,9 +10,7 @@ let send
     (client:TcpClient)
     (bytes:array<byte>)
     =
-        // (host, port) |> client.Connect
-        client.Connect(host, port)
-        printfn $"{client.Connected}"
+        (host, port) |> client.Connect
         (bytes, 0, bytes.Length) |> client.GetStream().Write
         
         

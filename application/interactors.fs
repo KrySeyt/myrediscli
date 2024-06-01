@@ -8,14 +8,14 @@ let ping
     (redisPing: unit->byte array)
     ()
     =
-        redisPing()
+        redisPing() |> ignore
    
 let get
     redisGet
     (key: Key)
-    :string
+    :unit
     =
-        redisGet key
+        redisGet key |> ignore
 
 let set
     redisSet
@@ -24,7 +24,7 @@ let set
     (alive: Lifetime option)
     :unit
     =
-        redisSet key value alive
+        redisSet key value alive |> ignore
     
 let waitReplicas
     redisWait

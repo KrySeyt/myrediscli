@@ -16,31 +16,31 @@ let ping
         receiver connection
     
 let get
-    (connection)
-    (sender)
-    (receiver)
+    (connection: TcpClient)
+    (sender: TcpClient -> byte array -> unit)
+    (receiver: TcpClient -> byte array)
     (key:Key)
     =
-        (connection, Commands.get, key |> sender) |> ignore
+        (connection, Commands.get key) ||> sender
         receiver connection
 
 let set
-    (connection:TcpClient)
-    (sender)
-    (receiver)
+    (connection: TcpClient)
+    (sender: TcpClient -> byte array -> unit)
+    (receiver: TcpClient -> byte array)
     (key:Key)
     (value:Value)
     (alive:Lifetime option)
     =
-        (connection, Commands.set, key, value, alive |> sender) |> ignore
+        (connection, Commands.set key value alive) ||> sender
         receiver connection
         
 let waitReplicas
-    (connection:TcpClient)
-    (sender)
-    (receiver)
+    (connection: TcpClient)
+    (sender: TcpClient -> byte array -> unit)
+    (receiver: TcpClient -> byte array)
     (replicasCount:int)
     (timeout:Timeout)
     =
-        (connection, Commands.waitReplicas, replicasCount, timeout |> sender) |> ignore
+        (connection, Commands.waitReplicas replicasCount timeout) ||> sender |> ignore
         receiver connection

@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <Compile Include="mocked.fs" />
+        <None Include="t.fsx" />
     </ItemGroup>
 
     <ItemGroup>
