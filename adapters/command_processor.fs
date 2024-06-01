@@ -10,7 +10,9 @@ let processCommand
     (cmd: string array)
     :unit
     =
-        match cmd with
+        match
+            Array.map (fun (x: string) -> x.ToLower()) cmd
+        with
         | [|"ping"|] -> pingInteractor ()
         | [|"get"; key|] -> getInteractor key
         | [|"set"; key; value; |] -> setInteractor key value None
