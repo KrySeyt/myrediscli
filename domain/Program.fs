@@ -3,7 +3,7 @@
 type Key = string
 type Value = string
 
-type Milliseconds = int
+type Milliseconds = Milliseconds of int
 
 type Lifetime = Milliseconds
 type Timeout = Milliseconds

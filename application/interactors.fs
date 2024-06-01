@@ -5,20 +5,20 @@ open Domain
 
 
 let ping
-    (redisPing: unit->byte array)
+    (redisPing: unit -> byte array)
     ()
     =
         redisPing() |> ignore
    
 let get
-    redisGet
+    (redisGet: Key -> byte array)
     (key: Key)
     :unit
     =
         redisGet key |> ignore
 
 let set
-    redisSet
+    (redisSet: Key -> Value -> Lifetime option -> byte array)
     (key: Key)
     (value: Value)
     (alive: Lifetime option)
@@ -27,8 +27,8 @@ let set
         redisSet key value alive |> ignore
     
 let waitReplicas
-    redisWait
+    (redisWait: int -> Timeout -> byte array)
     (replicasCount: int)
     (timeout: Timeout)
     =
-        ()
+        redisWait replicasCount timeout |> ignore

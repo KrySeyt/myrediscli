@@ -6,9 +6,10 @@ open System.Net.Sockets
 
 [<EntryPoint>]
 let main(args) =
-    let conn = new TcpClient()
-    let sender = TCPClient.send <|| ("localhost", 6379)
+    use conn = new TcpClient()
+    let sender = TCPClient.send "localhost" 6379
     let receiver = TCPClient.recv
+
     
     CommandProcessor.processCommand
     <| (Interactors.ping
@@ -25,6 +26,12 @@ let main(args) =
     
     <| (Interactors.set
         <| (TCPRedis.set
+            <| conn
+            <| sender
+            <| receiver))
+    
+    <| (Interactors.waitReplicas
+        <| (TCPRedis.waitReplicas
             <| conn
             <| sender
             <| receiver))

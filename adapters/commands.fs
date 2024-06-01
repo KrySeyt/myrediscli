@@ -32,5 +32,5 @@ let waitReplicas (replicasCount:int) (timeout:Timeout) =
         "*3\r\n" +
         "$4\r\nWAIT\r\n" +
         $"${replicasCount.ToString().Length}\r\n{replicasCount}\r\n" +
-        $"${timeout.ToString().Length}\r\n{timeout}\r\n"
+        $"${((string timeout).Split()[1]).Length}\r\n{((string timeout).Split()[1]).Length}\r\n"
     )

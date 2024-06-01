@@ -8,11 +8,12 @@ let send
     (host:string)
     (port:int)
     (client:TcpClient)
-    (bytes:array<byte>)
+    (bytes: byte array)
     =
         (host, port) |> client.Connect
         (bytes, 0, bytes.Length) |> client.GetStream().Write
         printfn "%s" (Encoding.UTF8.GetString bytes)
+        ()
         
         
 let recv (client: TcpClient) =
