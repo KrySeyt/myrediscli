@@ -6,22 +6,28 @@ open System.Net.Sockets
 
 [<EntryPoint>]
 let main(args) =
+    let conn = new TcpClient()
+    let sender = TCPClient.send <|| ("localhost", 6379)
+    let receiver = TCPClient.recv
+    
     CommandProcessor.processCommand
     <| (Interactors.ping
         <| (TCPRedis.ping
-            <| new TcpClient()
-            <| (TCPClient.send
-                <|| ("localhost", 6379))
-            
-            <| TCPClient.recv))
+            <| conn
+            <| sender
+            <| receiver))
 
     <| (Interactors.get
         <| (TCPRedis.get
-            <| new TcpClient()
-            <| (TCPClient.send
-                <|| ("localhost", 6379))
-            
-            <| TCPClient.recv))
+            <| conn
+            <| sender
+            <| receiver))
+    
+    <| (Interactors.set
+        <| (TCPRedis.set
+            <| conn
+            <| sender
+            <| receiver))
 
     <| args
 

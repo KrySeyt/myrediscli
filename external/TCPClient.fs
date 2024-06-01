@@ -12,11 +12,10 @@ let send
     =
         (host, port) |> client.Connect
         (bytes, 0, bytes.Length) |> client.GetStream().Write
+        printfn "%s" (Encoding.UTF8.GetString bytes)
         
         
-let recv
-    (client: TcpClient)
-    =
+let recv (client: TcpClient) =
         let bytes = Span(Array.zeroCreate<byte> 4096)
         client.GetStream().Read(bytes) |> ignore
         client.Close()
