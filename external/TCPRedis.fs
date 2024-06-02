@@ -29,7 +29,7 @@ let set
     (sender: TcpClient -> byte array -> unit)
     (receiver: TcpClient -> byte array)
     (key:Key)
-    (value:string)
+    (value:Value)
     (alive:Lifetime option)
     :Value
     =

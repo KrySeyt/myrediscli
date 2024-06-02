@@ -19,10 +19,10 @@ let get
         redisGet key |> presenter
 
 let set
-    (redisSet: Key -> string -> Lifetime option -> Value)
+    (redisSet: Key -> Value -> Lifetime option -> Value)
     (presenter: Value -> unit)
     (key: Key)
-    (value: string)
+    (value: Value)
     (alive: Lifetime option)
     :unit
     =

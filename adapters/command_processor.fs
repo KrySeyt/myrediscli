@@ -6,7 +6,7 @@ open System
 let processCommand
     (pingInteractor: unit -> unit)
     (getInteractor: Domain.Key -> unit)
-    (setInteractor: Domain.Key -> string -> Domain.Lifetime option -> unit)
+    (setInteractor: Domain.Key -> Domain.Value -> Domain.Lifetime option -> unit)
     (waitInteractor: int -> Domain.Timeout -> unit)
     (cmd: string array)
     :unit
@@ -16,9 +16,9 @@ let processCommand
         with
         | [|"ping"|] -> pingInteractor ()
         | [|"get"; key|] -> getInteractor key
-        | [|"set"; key; value; |] -> setInteractor key value None
+        | [|"set"; key; value; |] -> setInteractor key (Domain.StringValue value) None
         | [|"set"; key; value; "px"; lifetime |] when lifetime |> String.forall Char.IsDigit ->
-            setInteractor key value <| (Some (Domain.Milliseconds (int lifetime)))
+            setInteractor key (Domain.StringValue value) <| (Some (Domain.Milliseconds (int lifetime)))
             
         | [|"wait"; replicasCount; timeout;|] when
              replicasCount |> String.forall Char.IsDigit

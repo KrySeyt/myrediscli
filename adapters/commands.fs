@@ -2,12 +2,21 @@
 
 open Encoders
 
+
 let ping () = utf8 "*1\r\n$4\r\nPING\r\n"
 
 let get (key:Domain.Key) = utf8 $"*2\r\n$3\r\nGET\r\n${key.Length}\r\n{key}\r\n"
 
-let set (key:Domain.Key) (value:string) (lifetime:Domain.Lifetime option) =
-    printfn $"{lifetime}"
+
+let sanitazeValue (value: Domain.Value) : string=
+    match value with
+    | Domain.StringValue(value) -> value
+    | _ -> invalidArg "value" "is not StringValue"
+
+
+let set (key:Domain.Key) (value:Domain.Value) lifetime =
+    let value = sanitazeValue value
+    
     match lifetime with
     | Some time ->
         utf8 (
@@ -26,6 +35,7 @@ let set (key:Domain.Key) (value:string) (lifetime:Domain.Lifetime option) =
             $"${key.Length}\r\n{key}\r\n" +
             $"${value.Length}\r\n{value}\r\n" 
         )
+
 
 let waitReplicas (replicasCount:int) (timeout:Domain.Timeout) =
     utf8 (
