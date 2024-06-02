@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="mocked.fs" />
+        <Compile Include="tcp.fs" />
         <None Include="t.fsx" />
     </ItemGroup>
 

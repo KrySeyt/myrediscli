@@ -2,6 +2,7 @@ module TCPRedis
 
 open System
 open System.Net.Sockets
+open System.Text
 open Domain
 
 
@@ -10,30 +11,32 @@ let ping
     (sender: TcpClient -> byte array -> unit)
     (receiver: TcpClient -> byte array)
     ()
+    :string
     =
-        let a = Commands.ping()
-        sender connection a
-        receiver connection
+        sender connection <| Commands.ping()
+        receiver connection |> Encoding.UTF8.GetString
     
 let get
     (connection: TcpClient)
     (sender: TcpClient -> byte array -> unit)
     (receiver: TcpClient -> byte array)
     (key:Key)
+    :string
     =
-        (connection, Commands.get key) ||> sender
-        receiver connection
+        sender connection <| Commands.get key
+        receiver connection |> Encoding.UTF8.GetString
 
 let set
     (connection: TcpClient)
     (sender: TcpClient -> byte array -> unit)
     (receiver: TcpClient -> byte array)
     (key:Key)
-    (value:Value)
+    (value:string)
     (alive:Lifetime option)
+    :string
     =
         (connection, Commands.set key value alive) ||> sender
-        receiver connection
+        receiver connection |> Encoding.UTF8.GetString
         
 let waitReplicas
     (connection: TcpClient)
@@ -41,6 +44,7 @@ let waitReplicas
     (receiver: TcpClient -> byte array)
     (replicasCount:int)
     (timeout:Timeout)
+    :string
     =
         (connection, Commands.waitReplicas replicasCount timeout) ||> sender |> ignore
-        receiver connection
+        receiver connection |> Encoding.UTF8.GetString
