@@ -9,6 +9,14 @@ let ping
     ()
     =
         redisPing() |> presenter
+        
+let echo
+    (redisEcho: Value -> Value)
+    (presenter: Value -> unit)
+    (data: Value)
+    :unit
+    =
+        redisEcho data |> presenter
    
 let get
     (redisGet: Key -> Value)

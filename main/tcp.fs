@@ -10,7 +10,6 @@ let main(args) =
     let sender = TCPClient.send "localhost" 6379
     let receiver = TCPClient.recv
     let presenter = CLIPresenter.show
-
     
     CommandProcessor.processCommand
     <| (Interactors.ping
@@ -20,6 +19,13 @@ let main(args) =
             <| receiver)
         <| presenter)
 
+    <| (Interactors.echo
+        <| (TCPRedis.echo
+            <| conn
+            <| sender
+            <| receiver)
+        <| presenter)
+    
     <| (Interactors.get
         <| (TCPRedis.get
             <| conn
@@ -40,7 +46,7 @@ let main(args) =
             <| sender
             <| receiver)
         <| presenter)
-
+    
     <| args
 
     0

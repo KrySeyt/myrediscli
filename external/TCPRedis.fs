@@ -13,7 +13,18 @@ let ping
     =
         sender connection <| Commands.ping()
         receiver connection |> ResponseParser.parse
+
+let echo
+    (connection: TcpClient)
+    (sender: TcpClient -> byte array -> unit)
+    (receiver: TcpClient -> byte array)
+    (data:Value)
+    :Value
+    =
+        sender connection <| Commands.echo data
+        receiver connection |> ResponseParser.parse
     
+
 let get
     (connection: TcpClient)
     (sender: TcpClient -> byte array -> unit)

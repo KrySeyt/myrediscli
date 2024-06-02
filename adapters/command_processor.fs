@@ -5,6 +5,7 @@ open System
 
 let processCommand
     (pingInteractor: unit -> unit)
+    (echoInteractor: Domain.Value -> unit)
     (getInteractor: Domain.Key -> unit)
     (setInteractor: Domain.Key -> Domain.Value -> Domain.Lifetime option -> unit)
     (waitInteractor: int -> Domain.Timeout -> unit)
@@ -15,6 +16,7 @@ let processCommand
             Array.map (fun (x: string) -> x.ToLower()) cmd
         with
         | [|"ping"|] -> pingInteractor ()
+        | [|"echo"; value|] -> echoInteractor (Domain.StringValue value)
         | [|"get"; key|] -> getInteractor key
         | [|"set"; key; value; |] -> setInteractor key (Domain.StringValue value) None
         | [|"set"; key; value; "px"; lifetime |] when lifetime |> String.forall Char.IsDigit ->

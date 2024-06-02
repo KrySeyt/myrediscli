@@ -1,6 +1,7 @@
 module TCPClient
 
 open System
+open System.Text
 open System.Net.Sockets
 
 let send
