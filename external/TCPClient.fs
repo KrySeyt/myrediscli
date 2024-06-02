@@ -16,4 +16,4 @@ let send
 let recv (client: TcpClient) =
         let bytes = Span(Array.zeroCreate<byte> 4096)
         let bytesCount = client.GetStream().Read(bytes)
-        bytes.ToArray()[..bytesCount]
+        bytes.ToArray()[..bytesCount - 1]
