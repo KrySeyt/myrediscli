@@ -8,7 +8,9 @@
     <ItemGroup>
         <Compile Include="encoders.fs" />
         <Compile Include="commands.fs" />
+        <Compile Include="decoders.fs" />
         <Compile Include="command_processor.fs" />
+        <Compile Include="response_parser.fs" />
     </ItemGroup>
 
     <ItemGroup>

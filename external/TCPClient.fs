@@ -2,7 +2,7 @@ module TCPClient
 
 open System
 open System.Net.Sockets
-open System.Text
+open Decoders
 
 let send
     (host:string)
@@ -12,8 +12,7 @@ let send
     =
         (host, port) |> client.Connect
         (bytes, 0, bytes.Length) |> client.GetStream().Write
-        printfn "%s" (Encoding.UTF8.GetString bytes)
-        ()
+        printf "Sent: \n%s\n" (fromUtf8 bytes)  // Refactor decoding
         
         
 let recv (client: TcpClient) =

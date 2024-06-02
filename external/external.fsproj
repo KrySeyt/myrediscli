@@ -10,6 +10,7 @@
         <Compile Include="mockRedis.fs" />
         <Compile Include="TCPClient.fs" />
         <Compile Include="TCPRedis.fs" />
+        <Compile Include="CLIPresenter.fs" />
     </ItemGroup>
 
     <ItemGroup>
