@@ -4,6 +4,7 @@ type Key = string
 
 type Value =
     | StringValue of string
+    | BulkStringValue of string
     | IntValue of int
     | None
 
