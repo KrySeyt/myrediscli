@@ -6,7 +6,7 @@ open System
 let processCommand
     (pingInteractor: unit -> unit)
     (getInteractor: Domain.Key -> unit)
-    (setInteractor: Domain.Key -> Domain.Value -> Domain.Lifetime option -> unit)
+    (setInteractor: Domain.Key -> string -> Domain.Lifetime option -> unit)
     (waitInteractor: int -> Domain.Timeout -> unit)
     (cmd: string array)
     :unit

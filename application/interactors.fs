@@ -1,6 +1,5 @@
 ﻿module Interactors
 
-open System
 open Domain
 
 
@@ -23,7 +22,7 @@ let set
     (redisSet: Key -> string -> Lifetime option -> Value)
     (presenter: Value -> unit)
     (key: Key)
-    (value: Value)
+    (value: string)
     (alive: Lifetime option)
     :unit
     =
