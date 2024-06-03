@@ -46,6 +46,13 @@ let main(args) =
             <| sender
             <| receiver)
         <| presenter)
+
+    <| (Interactors.getConfig
+        <| (TCPRedis.getConfig
+            <| conn
+            <| sender
+            <| receiver)
+        <| presenter)
     
     <| args
 

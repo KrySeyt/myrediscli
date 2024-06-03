@@ -43,3 +43,10 @@ let waitReplicas
     (timeout: Timeout)
     =
         redisWait replicasCount timeout |> presenter
+        
+let getConfig
+    (redisConfigGet: Key -> Value)
+    (presenter: Value -> unit)
+    (key: Key)
+    =
+        redisConfigGet key |> presenter

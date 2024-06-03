@@ -57,3 +57,13 @@ let waitReplicas
     =
         (connection, Commands.waitReplicas replicasCount timeout) ||> sender |> ignore
         receiver connection |> ResponseParser.parse
+
+let getConfig
+    (connection: TcpClient)
+    (sender: TcpClient -> byte array -> unit)
+    (receiver: TcpClient -> byte array)
+    (key:Key)
+    :Value
+    =
+        (connection, Commands.configGet key) ||> sender
+        receiver connection |> ResponseParser.parse

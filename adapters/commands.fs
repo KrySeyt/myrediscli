@@ -19,6 +19,8 @@ let echo (value: Domain.Value) =
 
 let get (key:Domain.Key) = utf8 $"*2\r\n$3\r\nGET\r\n${key.Length}\r\n{key}\r\n"
 
+let configGet (key:Domain.Key) = utf8 $"*3\r\n$6\r\nCONFIG\r\n$3\r\nGET\r\n${key.Length}\r\n{key}\r\n"
+
 
 let set (key:Domain.Key) (value:Domain.Value) lifetime =
     let value = sanitazeValue value

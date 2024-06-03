@@ -9,6 +9,7 @@ let processCommand
     (getInteractor: Domain.Key -> unit)
     (setInteractor: Domain.Key -> Domain.Value -> Domain.Lifetime option -> unit)
     (waitInteractor: int -> Domain.Timeout -> unit)
+    (getConfigInteractor: Domain.Key -> unit)
     (cmd: string array)
     :unit
     =
@@ -18,6 +19,7 @@ let processCommand
         | [|"ping"|] -> pingInteractor ()
         | [|"echo"; value|] -> echoInteractor (Domain.StringValue value)
         | [|"get"; key|] -> getInteractor key
+        | [|"config"; "get"; key|] -> getConfigInteractor key
         | [|"set"; key; value; |] -> setInteractor key (Domain.StringValue value) None
         | [|"set"; key; value; "px"; lifetime |] when lifetime |> String.forall Char.IsDigit ->
             setInteractor key (Domain.StringValue value) <| (Some (Domain.Milliseconds (int lifetime)))
