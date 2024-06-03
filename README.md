@@ -32,14 +32,16 @@ Later =)
 ./main wait 3 1000
 ```
 
-[//]: # (```shell)
+```shell
 
-[//]: # (./main config get port)
+./main config get <param-name> // e.g. port or dbfilename
 
-[//]: # (```)
+```
 
 # Supported data types
 - String
+- BulkString (server responses only)
+- Array of BulkStrings (server responses only)
 - Integer (server responses only)
 - Null (server responses only)
 
