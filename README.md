@@ -1,8 +1,21 @@
 # MyRedisCLI
-CLI interface for [myredis](https://github.com/KrySeyt/myredis). Compatible with origin Redis
+CLI interface for [myredis](https://github.com/KrySeyt/myredis). Compatible with original Redis
 
 # Setup
-Later =)
+- Clone repo
+```shell
+git clone git@github.com:KrySeyt/myrediscli.git && cd myrediscli
+```
+
+- Build app
+```shell
+dotnet build --configuration Release
+```
+
+- Start app
+```shell
+./main/bin/Release/net8.0/main ping
+```
 
 # Supported commands
 
