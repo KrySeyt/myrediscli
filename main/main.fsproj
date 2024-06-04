@@ -17,4 +17,8 @@
       <ProjectReference Include="..\domain\domain.fsproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="CommandLineParser.Fsharp" Version="2.9.1" />
+    </ItemGroup>
+
 </Project>

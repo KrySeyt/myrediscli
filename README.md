@@ -18,6 +18,13 @@ dotnet build --configuration Release
 ```
 
 # Supported commands
+Flags:
+- `-p` `--port` - port of Redis server. Default `6379`
+- `-h` `--host` - host of Redis server. Default `localhost`
+
+```shell
+./main get foo
+```
 
 ```shell
 ./main set foo bar
